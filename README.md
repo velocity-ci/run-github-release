@@ -6,9 +6,10 @@ Provides a Docker image that can create GitHub Releases and upload files
 ### General
 ```
 docker run --rm \
---env GITHUB_RELEASE_TOKEN=xxxxx \
+--env GITHUB_ACCESS_TOKEN=xxxxx \
 --volume $(pwd):/app \
 --workdir /app \
+civelocity/run.github-release \
 velocity-ci run-github-release 0.1.0 dist/run-github-release
 ```
 
