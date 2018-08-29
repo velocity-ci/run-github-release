@@ -2,12 +2,12 @@ description: "Builds and publishes Docker Image to Docker Hub"
 name: publish
 
 parameters:
-  - use: https://github.com/velocity-ci/parameters.aws-ssm/releases/download/0.1.0/aws-ssm
+  - use: https://github.com/velocity-ci/parameter.aws-ssm/releases/download/0.1.0/aws-ssm
     arguments:
       name: "/velocityci/docker-hub/username"
     exports:
       value: docker_username
-  - use: https://github.com/velocity-ci/parameters.aws-ssm/releases/download/0.1.0/aws-ssm
+  - use: https://github.com/velocity-ci/parameter.aws-ssm/releases/download/0.1.0/aws-ssm
     arguments:
       name: "/velocityci/docker-hub/password"
     exports:

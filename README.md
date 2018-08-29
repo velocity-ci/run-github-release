@@ -18,6 +18,11 @@ velocity-ci run-github-release 0.1.0 dist/run-github-release
 ```
 ---
 # task.yml
-
-
+steps:
+  - description: Upload Release
+    type: run
+    image: civelocity/run.github-release
+    environment:
+      GITHUB_ACCESS_TOKEN: ${github_release_token}
+    command: velocity-ci parameter.aws-ssm ${GIT_DESCRIBE} dist/aws-ssm
 ```
