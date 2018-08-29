@@ -1,0 +1,31 @@
+description: "Builds and publishes Docker Image to Docker Hub"
+name: publish
+
+parameters:
+  - use: https://github.com/velocity-ci/parameters.aws-ssm/releases/download/0.1.0/aws-ssm
+    arguments:
+      name: "/velocityci/docker-hub/username"
+    exports:
+      value: docker_username
+  - use: https://github.com/velocity-ci/parameters.aws-ssm/releases/download/0.1.0/aws-ssm
+    arguments:
+      name: "/velocityci/docker-hub/password"
+    exports:
+      value: docker_password
+
+docker:
+  registries:
+    - use: https://github.com/velocity-ci/registry.docker-hub/releases/download/0.1.0/docker-hub
+      arguments:
+        username: ${docker_username}
+        password: ${docker_password}
+
+steps: 
+  - type: build
+    description: Publish image
+    tags:
+      - civelocity/run.github-release:${GIT_DESCRIBE}
+
+  - type: push
+    tags:
+      - civelocity/run.github-release:${GIT_DESCRIBE}
